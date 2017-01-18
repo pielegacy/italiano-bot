@@ -19,7 +19,10 @@ This requires the following for compilation:
 - `npm`
 - `tsc`
 
-Just run the commands
+Include a Discord bot token in a notepad file called token.txt 
+or just set its variable in index.ts.
+
+After this, run the commands
 ```
 npm install
 tsc index.ts
