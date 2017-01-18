@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6"
+    },
+    "typeAcquisition": {
+        "include": [
+            "discord.js"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
