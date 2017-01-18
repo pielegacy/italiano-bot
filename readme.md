@@ -22,6 +22,7 @@ This requires the following for compilation:
 Just run the commands
 ```
 npm install
+tsc index.ts
 node index.js
 ```
 and you should be good to go.
