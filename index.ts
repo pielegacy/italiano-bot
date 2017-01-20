@@ -5,6 +5,7 @@ let token: string = "";
 client.on('ready', () => {
     console.log("It's a me, Andrew! Call me by typing Italiano");
     client.user.setGame("with myself");
+    JsonGetAsync("http://ripperquotes.azurewebsites.net");
     // client.channels.get("name", "reddit-free-zone");
 });
 const sayings: Array<string> = [
@@ -21,7 +22,8 @@ const sayings: Array<string> = [
     ":pizza:",
     "My Dad's dead",
     "No shazz I wasn't bonging on",
-    "I didn't think I was this quotable"
+    "I didn't think I was this quotable",
+    "Drake's probably the whitest black guy out there"
 ];
 const ThoughtsRead = (): Array<string> => {
     let thoughtString = fs.readFileSync("thoughts.json");
@@ -62,6 +64,33 @@ client.on('message', message => {
         }
     }
 });
+async function JsonGetAsync(url: string) {
+    let res = await new Promise<string>(resolve => {
+        let request = new XMLHttpRequest();
+        request.open("GET", APIUri + url, true);
+        request.onload = () => {
+            resolve(request.responseText);
+        }
+        request.send();
+
+    });
+    return res;
+}
+/**
+ * Asynchronous function for posting data to the api, the URL is appended to the the main uri
+ */
+async function JsonPostAsync(url: string, data: Object) {
+    let res = await new Promise<string>(resolve => {
+        let request = new XMLHttpRequest();
+        request.withCredentials = true;
+        request.open("POST", APIUri + url);
+        request.setRequestHeader("content-type", "application/json");
+        request.setRequestHeader("cache-control", "no-cache");
+        request.onload = () => resolve(request.status + ":" + request.responseText);
+        request.send(JSON.stringify(data));
+    });
+    return res;
+}
 // Check for token.txt
 if (token == "") {
     fs.readFile("token.txt", "utf-8", (err, data) => {
