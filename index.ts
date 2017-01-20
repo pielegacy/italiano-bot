@@ -19,7 +19,9 @@ const sayings: Array<string> = [
     "Metal music and Vaporwave, that's the stuff",
     "http://4chan.org/ck is where it's at",
     ":pizza:",
-    "My Dad's dead"
+    "My Dad's dead",
+    "No shazz I wasn't bonging on",
+    "I didn't think I was this quotable"
 ];
 const ThoughtsRead = (): Array<string> => {
     let thoughtString = fs.readFileSync("thoughts.json");
