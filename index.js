@@ -1,13 +1,13 @@
-const Discord = require('discord.js');
-const fs = require('fs');
-const client = new Discord.Client();
-let token: string = "";
-client.on('ready', () => {
+var Discord = require('discord.js');
+var fs = require('fs');
+var client = new Discord.Client();
+var token = "";
+client.on('ready', function () {
     console.log("It's a me, Andrew! Call me by typing Italiano");
     client.user.setGame("with myself");
     // client.channels.get("name", "reddit-free-zone");
 });
-const sayings: Array<string> = [
+var sayings = [
     "Mamma mia!",
     "Wowee, I love Anime and Pizza!",
     "Yahoo! Italy!",
@@ -21,20 +21,20 @@ const sayings: Array<string> = [
     ":pizza:",
     "My Dad's dead"
 ];
-const ThoughtsRead = (): Array<string> => {
-    let thoughtString = fs.readFileSync("thoughts.json");
-    let thoughts = thoughtString == undefined ? ([] as Array<string>) : JSON.parse(thoughtString);
+var ThoughtsRead = function () {
+    var thoughtString = fs.readFileSync("thoughts.json");
+    var thoughts = thoughtString == undefined ? [] : JSON.parse(thoughtString);
     return thoughts;
-}
-const ThoughtsSave = (thoughts: Array<string>) => {
+};
+var ThoughtsSave = function (thoughts) {
     fs.writeFileSync("thoughts.json", JSON.stringify(thoughts));
-}
-client.on('message', message => {
+};
+client.on('message', function (message) {
     if (message.content.startsWith("Italiano")) {
-        if ((message.content as string).search(" remember ") != -1) {
-            let thought = (message.content as string).split(" remember ")[1];
+        if (message.content.search(" remember ") != -1) {
+            var thought = message.content.split(" remember ")[1];
             if (thought != "") {
-                let thoughts = ThoughtsRead();
+                var thoughts = ThoughtsRead();
                 thoughts.push(thought);
                 console.log(thoughts);
                 ThoughtsSave(thoughts);
@@ -43,29 +43,28 @@ client.on('message', message => {
             else
                 message.reply("What do I need to remember?");
         }
-        else if ((message.content as string).search("what do you know") != -1) {
-            let thoughts = ThoughtsRead();
+        else if (message.content.search("what do you know") != -1) {
+            var thoughts = ThoughtsRead();
             if (thoughts.length > 0) {
-                let index = Math.floor(Math.random() * (thoughts.length));
-                let thought = thoughts[index];
+                var index = Math.floor(Math.random() * (thoughts.length));
+                var thought = thoughts[index];
                 message.reply("Well someone told me " + thought);
             }
             else
                 message.reply("I don't know anything, tell me to remember something");
         }
         else {
-            let index = Math.floor(Math.random() * (sayings.length));
-            let response = sayings[index];
+            var index = Math.floor(Math.random() * (sayings.length));
+            var response = sayings[index];
             message.reply(response);
         }
     }
 });
 // Check for token.txt
 if (token == "") {
-    fs.readFile("token.txt", "utf-8", (err, data) => {
+    fs.readFile("token.txt", "utf-8", function (err, data) {
         token = data;
         client.login(token);
-
     });
 }
 else
