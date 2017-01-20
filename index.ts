@@ -6,7 +6,7 @@ let token: string = "";
 let quoteJson;
 client.on('ready', () => {
     console.log("It's a me, Andrew! Call me by typing Italiano");
-    client.user.setGame("with myself");
+    client.user.setGame("with himself");
     // http.get("http://ripperquotes.azurewebsites.net/api/QuotesApi", (res) => {
     //     let dataString = "";
     //     res.on('data', (d) => dataString += d);
