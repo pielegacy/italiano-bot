@@ -4,6 +4,7 @@ const client = new Discord.Client();
 let token: string = "";
 client.on('ready', () => {
     console.log("It's a me, Andrew! Call me by typing Italiano");
+    client.user.setGame("with myself");
     // client.channels.get("name", "reddit-free-zone");
 });
 const sayings: Array<string> = [
