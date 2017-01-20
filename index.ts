@@ -1,11 +1,17 @@
 const Discord = require('discord.js');
+const http = require('http');
 const fs = require('fs');
 const client = new Discord.Client();
 let token: string = "";
+let quoteJson;
 client.on('ready', () => {
     console.log("It's a me, Andrew! Call me by typing Italiano");
     client.user.setGame("with myself");
-    JsonGetAsync("http://ripperquotes.azurewebsites.net");
+    // http.get("http://ripperquotes.azurewebsites.net/api/QuotesApi", (res) => {
+    //     let dataString = "";
+    //     res.on('data', (d) => dataString += d);
+    //     res.on('end', () => quoteJson = JSON.parse(dataString));
+    // });
     // client.channels.get("name", "reddit-free-zone");
 });
 const sayings: Array<string> = [
@@ -57,6 +63,10 @@ client.on('message', message => {
             else
                 message.reply("I don't know anything, tell me to remember something");
         }
+        // else if ((message.content as string).search("quote") != -1){
+        //     let quote = quoteJson[Math.floor(Math.random() * (quoteJson.length))];
+        //     message.reply(`"${quote.QuoteText}"\n \t~ ${quote.QuoteAuthor}`);
+        // }
         else {
             let index = Math.floor(Math.random() * (sayings.length));
             let response = sayings[index];
@@ -64,33 +74,6 @@ client.on('message', message => {
         }
     }
 });
-async function JsonGetAsync(url: string) {
-    let res = await new Promise<string>(resolve => {
-        let request = new XMLHttpRequest();
-        request.open("GET", APIUri + url, true);
-        request.onload = () => {
-            resolve(request.responseText);
-        }
-        request.send();
-
-    });
-    return res;
-}
-/**
- * Asynchronous function for posting data to the api, the URL is appended to the the main uri
- */
-async function JsonPostAsync(url: string, data: Object) {
-    let res = await new Promise<string>(resolve => {
-        let request = new XMLHttpRequest();
-        request.withCredentials = true;
-        request.open("POST", APIUri + url);
-        request.setRequestHeader("content-type", "application/json");
-        request.setRequestHeader("cache-control", "no-cache");
-        request.onload = () => resolve(request.status + ":" + request.responseText);
-        request.send(JSON.stringify(data));
-    });
-    return res;
-}
 // Check for token.txt
 if (token == "") {
     fs.readFile("token.txt", "utf-8", (err, data) => {
