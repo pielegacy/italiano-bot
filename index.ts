@@ -29,7 +29,8 @@ const sayings: Array<string> = [
     "My Dad's dead",
     "No shazz I wasn't bonging on",
     "I didn't think I was this quotable",
-    "Drake's probably the whitest black guy out there"
+    "Drake's probably the whitest black guy out there",
+    "Square up sesh, pizza, mamma mia"
 ];
 const ThoughtsRead = (): Array<string> => {
     let thoughtString = fs.readFileSync("thoughts.json");
