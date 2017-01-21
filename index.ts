@@ -75,11 +75,6 @@ client.on('message', message => {
 That's amore
 When the world seems to shine like you've had too much wine
 That's amore`, { tts: true });
-            message.channel.sendMessage(`
-Bells will ring ting-a-ling-a-ling, ting-a-ling-a-ling
-And you'll sing "Vita bella"
-Hearts will play tippy-tippy-tay, tippy-tippy-tay
-Like a gay tarantella`, { tts: true });
         }
         else {
             let index = Math.floor(Math.random() * (sayings.length));
