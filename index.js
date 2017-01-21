@@ -34,6 +34,10 @@ var sayings = [
     "Yeet",
     "*sneezes*"
 ];
+/**
+ * Check if message includes shit
+ */
+var Contains = function (msg, sub) { return msg.search(sub) != -1; };
 var ThoughtsRead = function () {
     var thoughtString = fs.readFileSync("thoughts.json");
     var thoughts = thoughtString == undefined ? [] : JSON.parse(thoughtString);
@@ -44,7 +48,7 @@ var ThoughtsSave = function (thoughts) {
 };
 client.on('message', function (message) {
     if (message.content.startsWith("Italiano")) {
-        if (message.content.search(" remember ") != -1) {
+        if (Contains(message.content, " remember ")) {
             var thought = message.content.split(" remember ")[1];
             if (thought != "") {
                 var thoughts = ThoughtsRead();
@@ -56,7 +60,7 @@ client.on('message', function (message) {
             else
                 message.reply("What do I need to remember?");
         }
-        else if (message.content.search("what do you know") != -1) {
+        else if (Contains(message.content, "what do you know")) {
             var thoughts = ThoughtsRead();
             if (thoughts.length > 0) {
                 var index = Math.floor(Math.random() * (thoughts.length));
@@ -65,6 +69,9 @@ client.on('message', function (message) {
             }
             else
                 message.reply("I don't know anything, tell me to remember something");
+        }
+        else if (Contains(message.content, "sing")) {
+            message.channel.sendMessage("When a moon hits your eye like a big pizza pie\nThat's amore\nWhen the world seems to shine like you've had too much wine\nThat's amore\nBells will ring ting-a-ling-a-ling, ting-a-ling-a-ling\nAnd you'll sing \"Vita bella\"\nHearts will play tippy-tippy-tay, tippy-tippy-tay\n        Like a gay tarantella", { tts: true });
         }
         else {
             var index = Math.floor(Math.random() * (sayings.length));

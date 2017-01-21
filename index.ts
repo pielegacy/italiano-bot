@@ -34,6 +34,10 @@ const sayings: Array<string> = [
     "Yeet",
     "*sneezes*"
 ];
+/**
+ * Check if message includes shit
+ */
+const Contains = (msg : string, sub : string) : boolean => msg.search(sub) != -1;
 const ThoughtsRead = (): Array<string> => {
     let thoughtString = fs.readFileSync("thoughts.json");
     let thoughts = thoughtString == undefined ? ([] as Array<string>) : JSON.parse(thoughtString);
@@ -44,7 +48,7 @@ const ThoughtsSave = (thoughts: Array<string>) => {
 }
 client.on('message', message => {
     if (message.content.startsWith("Italiano")) {
-        if ((message.content as string).search(" remember ") != -1) {
+        if (Contains(message.content, " remember ")) {
             let thought = (message.content as string).split(" remember ")[1];
             if (thought != "") {
                 let thoughts = ThoughtsRead();
@@ -56,7 +60,7 @@ client.on('message', message => {
             else
                 message.reply("What do I need to remember?");
         }
-        else if ((message.content as string).search("what do you know") != -1) {
+        else if (Contains(message.content, "what do you know")) {
             let thoughts = ThoughtsRead();
             if (thoughts.length > 0) {
                 let index = Math.floor(Math.random() * (thoughts.length));
@@ -66,10 +70,16 @@ client.on('message', message => {
             else
                 message.reply("I don't know anything, tell me to remember something");
         }
-        // else if ((message.content as string).search("quote") != -1){
-        //     let quote = quoteJson[Math.floor(Math.random() * (quoteJson.length))];
-        //     message.reply(`"${quote.QuoteText}"\n \t~ ${quote.QuoteAuthor}`);
-        // }
+        else if (Contains(message.content, "sing")){
+            message.channel.sendMessage(`When a moon hits your eye like a big pizza pie
+That's amore
+When the world seems to shine like you've had too much wine
+That's amore
+Bells will ring ting-a-ling-a-ling, ting-a-ling-a-ling
+And you'll sing "Vita bella"
+Hearts will play tippy-tippy-tay, tippy-tippy-tay
+        Like a gay tarantella`, {tts:true});
+        }
         else {
             let index = Math.floor(Math.random() * (sayings.length));
             let response = sayings[index];
