@@ -29,7 +29,8 @@ var sayings = [
     "My Dad's dead",
     "No shazz I wasn't bonging on",
     "I didn't think I was this quotable",
-    "Drake's probably the whitest black guy out there"
+    "Drake's probably the whitest black guy out there",
+    "Square up sesh, pizza, mamma mia"
 ];
 var ThoughtsRead = function () {
     var thoughtString = fs.readFileSync("thoughts.json");
