@@ -78,7 +78,7 @@ That's amore
 Bells will ring ting-a-ling-a-ling, ting-a-ling-a-ling
 And you'll sing "Vita bella"
 Hearts will play tippy-tippy-tay, tippy-tippy-tay
-        Like a gay tarantella`, {tts:true});
+Like a gay tarantella`, {tts:true});
         }
         else {
             let index = Math.floor(Math.random() * (sayings.length));

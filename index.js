@@ -71,7 +71,7 @@ client.on('message', function (message) {
                 message.reply("I don't know anything, tell me to remember something");
         }
         else if (Contains(message.content, "sing")) {
-            message.channel.sendMessage("When a moon hits your eye like a big pizza pie\nThat's amore\nWhen the world seems to shine like you've had too much wine\nThat's amore\nBells will ring ting-a-ling-a-ling, ting-a-ling-a-ling\nAnd you'll sing \"Vita bella\"\nHearts will play tippy-tippy-tay, tippy-tippy-tay\n        Like a gay tarantella", { tts: true });
+            message.channel.sendMessage("When a moon hits your eye like a big pizza pie\nThat's amore\nWhen the world seems to shine like you've had too much wine\nThat's amore\nBells will ring ting-a-ling-a-ling, ting-a-ling-a-ling\nAnd you'll sing \"Vita bella\"\nHearts will play tippy-tippy-tay, tippy-tippy-tay\nLike a gay tarantella", { tts: true });
         }
         else {
             var index = Math.floor(Math.random() * (sayings.length));
