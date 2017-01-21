@@ -73,6 +73,9 @@ client.on('message', function (message) {
         else if (Contains(message.content, "sing")) {
             message.channel.sendMessage("When a moon hits your eye like a big pizza pie\nThat's amore\nWhen the world seems to shine like you've had too much wine\nThat's amore", { tts: true });
         }
+        else if (Contains(message.content, "chat")) {
+            message.channel.sendMessage("Milky, what's poppin' nigga?", { tts: true });
+        }
         else {
             var index = Math.floor(Math.random() * (sayings.length));
             var response = sayings[index];
