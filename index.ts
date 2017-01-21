@@ -37,7 +37,7 @@ const sayings: Array<string> = [
 /**
  * Check if message includes shit
  */
-const Contains = (msg : string, sub : string) : boolean => msg.search(sub) != -1;
+const Contains = (msg: string, sub: string): boolean => msg.search(sub) != -1;
 const ThoughtsRead = (): Array<string> => {
     let thoughtString = fs.readFileSync("thoughts.json");
     let thoughts = thoughtString == undefined ? ([] as Array<string>) : JSON.parse(thoughtString);
@@ -70,15 +70,16 @@ client.on('message', message => {
             else
                 message.reply("I don't know anything, tell me to remember something");
         }
-        else if (Contains(message.content, "sing")){
+        else if (Contains(message.content, "sing")) {
             message.channel.sendMessage(`When a moon hits your eye like a big pizza pie
 That's amore
 When the world seems to shine like you've had too much wine
-That's amore
+That's amore`, { tts: true });
+            message.channel.sendMessage(`
 Bells will ring ting-a-ling-a-ling, ting-a-ling-a-ling
 And you'll sing "Vita bella"
 Hearts will play tippy-tippy-tay, tippy-tippy-tay
-Like a gay tarantella`, {tts:true});
+Like a gay tarantella`, { tts: true });
         }
         else {
             let index = Math.floor(Math.random() * (sayings.length));
@@ -87,7 +88,7 @@ Like a gay tarantella`, {tts:true});
         }
     }
     else if ((message.content as string).toLowerCase().search("t(-*| *|)pose") != -1)
-        message.channel.sendMessage("Yeet!", {tts:true});
+        message.channel.sendMessage("Yeet!", { tts: true });
 });
 // Check for token.txt
 if (token == "") {
