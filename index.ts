@@ -51,7 +51,7 @@ client.on('message', message => {
                 thoughts.push(thought);
                 console.log(thoughts);
                 ThoughtsSave(thoughts);
-                message.channel.sendMessage("I shall remember " + thought + " for you", {tts:true});
+                message.reply("I shall remember " + thought + " for you");
             }
             else
                 message.reply("What do I need to remember?");
@@ -76,6 +76,8 @@ client.on('message', message => {
             message.reply(response);
         }
     }
+    else if ((message.content as string).search("t(-*| *|)pose") != -1)
+        message.channel.reply("YEET", {tts:true});
 });
 // Check for token.txt
 if (token == "") {
