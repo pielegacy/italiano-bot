@@ -77,7 +77,7 @@ client.on('message', message => {
         }
     }
     else if ((message.content as string).search("t(-*| *|)pose") != -1)
-        message.channel.reply("YEET", {tts:true});
+        message.channel.sendMessage("YEET", {tts:true});
 });
 // Check for token.txt
 if (token == "") {
