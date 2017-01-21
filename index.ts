@@ -76,6 +76,9 @@ That's amore
 When the world seems to shine like you've had too much wine
 That's amore`, { tts: true });
         }
+        else if (Contains(message.content, "chat")) {
+            message.channel.sendMessage("Milky, what's poppin' nigga?", { tts: true });
+        }
         else {
             let index = Math.floor(Math.random() * (sayings.length));
             let response = sayings[index];
