@@ -51,7 +51,7 @@ client.on('message', message => {
                 thoughts.push(thought);
                 console.log(thoughts);
                 ThoughtsSave(thoughts);
-                message.reply("I shall remember " + thought + " for you");
+                message.channel.sendMessage("I shall remember " + thought + " for you", {tts:true});
             }
             else
                 message.reply("What do I need to remember?");
