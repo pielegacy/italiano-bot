@@ -30,7 +30,9 @@ const sayings: Array<string> = [
     "No shazz I wasn't bonging on",
     "I didn't think I was this quotable",
     "Drake's probably the whitest black guy out there",
-    "Square up sesh, pizza, mamma mia"
+    "Square up sesh, pizza, mamma mia",
+    "Yeet",
+    "*sneezes*"
 ];
 const ThoughtsRead = (): Array<string> => {
     let thoughtString = fs.readFileSync("thoughts.json");
